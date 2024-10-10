@@ -9,7 +9,15 @@ from tokenizer_ita import EnglishTokenizer
 from process_data import get_dataset
 
 
-def print_pose(pose_data, num_joints, num_dims):
+def print_pose(pose_data, num_joints):
+    """
+    Prints the pose data for each frame and joint.
+
+    Args:
+        pose_data (numpy.ndarray): A 3D array of shape (num_frames, num_joints, num_dimensions)
+                                   containing the pose data for each frame and joint.
+        num_joints (int): The number of joints in the pose data.
+    """
     if pose_data.shape[0] == 0:
         print("No pose data available.")
         return
@@ -32,6 +40,19 @@ def draw_points_on_black_image(
     point_radius=5,
     frame_number=1,
 ):
+    """
+    Draws points on a black image and annotates it with the frame number.
+
+    Args:
+        points (list of tuples): List of (x, y) coordinates for the points to be drawn.
+        image_size (tuple, optional): Size of the image as (width, height). Defaults to (640, 480).
+        point_color (tuple, optional): Color of the points in BGR format. Defaults to (0, 255, 0).
+        point_radius (int, optional): Radius of the points. Defaults to 5.
+        frame_number (int, optional): Frame number to be annotated on the image. Defaults to 1.
+
+    Returns:
+        numpy.ndarray: Image with points and frame number annotated.
+    """
     black_image = np.zeros((image_size[1], image_size[0], 3), dtype=np.uint8)
     for x, y in points:
         cv2.circle(black_image, (int(x), int(y)), point_radius, point_color, -1)
@@ -49,8 +70,25 @@ def draw_points_on_black_image(
 
 
 def convert_3d_to_2d(
-    points_3d, focal_length=1.0, center_x=0, center_y=0, scale_factor=10
+    points_3d,
+    focal_length=1.0,
+    center_x=0,
+    center_y=0,
+    scale_factor=10,
 ):
+    """
+    Convert a list of 3D points to 2D points using a simple projection.
+
+    Args:
+        points_3d (list of tuples): A list of tuples where each tuple represents a point in 3D space (x, y, z).
+        focal_length (float, optional): The focal length of the projection. Defaults to 1.0.
+        center_x (int, optional): The x-coordinate of the center of the projection. Defaults to 0.
+        center_y (int, optional): The y-coordinate of the center of the projection. Defaults to 0.
+        scale_factor (int, optional): A scaling factor to apply to the projected points. Defaults to 10.
+
+    Returns:
+        list of tuples: A list of tuples where each tuple represents a point in 2D space (x_2d, y_2d).
+    """
     points_2d = []
     for x, y, z in points_3d:
         x_2d = focal_length * x * scale_factor + center_x
@@ -99,7 +137,13 @@ def save_tensor_to_file(tensor, filename):
 
 
 def pred(
-    model, dataset, output_dir, vis_process=False, gen_k=30, vis=True, subset=None
+    model,
+    dataset,
+    output_dir,
+    vis_process=False,
+    gen_k=30,
+    vis=True,
+    subset=None,
 ):
     os.makedirs(output_dir, exist_ok=True)
     preds = []
