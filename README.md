@@ -8,12 +8,10 @@ This repository contains the official code for the paper Text-to-LIS: Iterative 
 
 ```bibtex
 @inproceedings{bonettaNL4AI,
-   title={{Preface to the Eighth Workshop on Natural Language for 
-Artificial Intelligence (NL4AI)}},
+   title={{Preface to the Eighth Workshop on Natural Language for Artificial Intelligence (NL4AI)}},
    author={Bonetta, Giovanni and Hromei, Claudiu Daniel and Siciliani, Lucia and Stranisci, Marco Antonio},
-   booktitle={Proceedings of the Eighth Workshop on Natural Language 
-for Artificial Intelligence (NL4AI 2024) co-located with 23th 
-International Conference of the Italian Association for Artificial 
-Intelligence (AI*IA 2024)},
+   booktitle={Proceedings of the Eighth Workshop on Natural Language for Artificial Intelligence (NL4AI 2024)
+               co-located with 23th International Conference of the Italian Association for Artificial
+               Intelligence (AI*IA 2024)},
    year={2024} }
 ```
