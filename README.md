@@ -6,7 +6,7 @@ This repository contains the official code for the paper Text-to-LIS: Iterative 
 ![Text2LISModel](https://github.com/user-attachments/assets/c2a3e806-db67-483c-b88d-b3be3ef93b58)
 
 
-
+```bibtex
 @inproceedings{bonettaNL4AI,
    title={{Preface to the Eighth Workshop on Natural Language for 
 Artificial Intelligence (NL4AI)}},
@@ -16,3 +16,4 @@ for Artificial Intelligence (NL4AI 2024) co-located with 23th
 International Conference of the Italian Association for Artificial 
 Intelligence (AI*IA 2024)},
    year={2024} }
+```
