@@ -163,3 +163,4 @@ cython_debug/
 
 # Notebooks ipynb
 text2lis/notebooks
+pretrained_models/
