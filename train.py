@@ -13,7 +13,7 @@ import sys
 
 from process_data import get_synthetic_dataset
 from Iterative_Text_to_LIS_Model import IterativeTextGuidedPoseGenerationModel
-from demo.inference import pred
+from inference import pred
 
 from tokenizer_ita import EnglishTokenizer
 from colator import zero_pad_collator

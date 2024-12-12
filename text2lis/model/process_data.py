@@ -1,5 +1,4 @@
 import os
-
 import pandas as pd
 import torch
 import numpy as np
@@ -9,8 +8,8 @@ from pose_format.pose_header import PoseHeaderComponent, PoseHeaderDimensions
 from tqdm import tqdm
 from transformers import CLIPTokenizer
 
-from data.dataset import Text2MotionDataset
-from colator import zero_pad_collator  # Assicurati che questa importazione funzioni nel tuo contesto
+from text2lis.data.dataset import Text2MotionDataset
+from text2lis.model.colator import zero_pad_collator  # Assicurati che questa importazione funzioni nel tuo contesto
 from torch.utils.data import Dataset, DataLoader
 
 MIN_CONFIDENCE = 0.2

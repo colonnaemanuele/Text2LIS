@@ -3,7 +3,7 @@ from typing import List
 import torch
 from fontTools.ttLib import TTFont
 
-from colator import zero_pad_collator
+from text2lis.model.colator import zero_pad_collator
 
 MAX_TEXT_LEN = 100
 
@@ -15,8 +15,8 @@ class EnglishTokenizer:
         self.unk_token_id = 2  # Token for unknown characters
 
         # Use a standard font that supports English characters (Arial)
-        self.font_path = r"C:\Windows\Fonts\Arial.ttf"
-
+        self.font_path = r"arial.ttf"
+        
         with TTFont(self.font_path) as font:
             tokens = [chr(key) for key in font["cmap"].getBestCmap().keys()]
 

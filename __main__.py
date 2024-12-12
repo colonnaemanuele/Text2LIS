@@ -1,5 +1,7 @@
 import sys
 import subprocess
+sys.path.append('text2lis/model')
+sys.path.append('text2lis/data')
 
 def main():
     if len(sys.argv) != 2:

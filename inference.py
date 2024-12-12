@@ -5,8 +5,8 @@ import numpy as np
 import torch
 from torch.optim import Adam, SGD
 from text2lis.model.text2lis import TextGuidedPoseGenerationModel
-from tokenizer_ita import EnglishTokenizer
-from process_data import get_dataset
+from text2lis.model.process_data import get_dataset
+from text2lis.model.tokenizer_ita import EnglishTokenizer
 
 
 def print_pose(pose_data, num_joints):
@@ -267,9 +267,7 @@ if __name__ == "__main__":
     model = TextGuidedPoseGenerationModel(**model_args)
 
     # Load the saved model weights
-    model.load_state_dict(
-        torch.load("demo/model.pth", map_location=torch.device("cpu"))
-    )
+    model.load_state_dict(torch.load("pretrained_models/ckpt_Text2LIS_2024-07-16_1258/model_1step.ckpt", map_location=torch.device("cpu")))
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model.to(device)
