@@ -17,12 +17,12 @@ source .venv/bin/activate  # Su sistemi Unix o MacOS
 .venv\Scripts\activate   # Su sistemi Windows
 ```
 
-### Installazione delle Dipendenze
+### Install dependences
 ```bash
 pip install -r requirements.txt
 ```
 
-### Esecuzione del Codice per Demo inferenza
+### Inference
 ```bash
 python __main__.py inference 
 ```
