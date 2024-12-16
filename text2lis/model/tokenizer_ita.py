@@ -15,7 +15,7 @@ class EnglishTokenizer:
         self.unk_token_id = 2  # Token for unknown characters
 
         # Use a standard font that supports English characters (Arial)
-        self.font_path = r"arial.ttf"
+        self.font_path = r"font/arial.ttf"
         
         with TTFont(self.font_path) as font:
             tokens = [chr(key) for key in font["cmap"].getBestCmap().keys()]

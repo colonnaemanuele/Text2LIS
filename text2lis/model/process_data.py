@@ -100,7 +100,7 @@ def generate_pose_datum(id: str, text: str, pose_length: int, pose: List) -> Tex
     pose_dim = 3  # 3D space: (x, y, confidence)
 
     # Percorso del file Excel
-    file = r"initial_pose.txt"
+    file = r"text2lis/model/initial_pose.txt"
 
     # Crea la matrice dei keypoints
     keypoints_matrix = load_initial(file)
@@ -189,7 +189,7 @@ def create_synthetic_dataset(num_samples: int = 1000, max_seq_size: int = 200) -
 
     ]
     tokenizer = CLIPTokenizer.from_pretrained("openai/clip-vit-base-patch32")
-    dataset_ = Text2MotionDataset(r"D:\LISDataset", tokenizer)
+    dataset_ = Text2MotionDataset(r"LIS", tokenizer)
     for idx in tqdm(range(len(dataset_))):
         if idx!= 5099:
 

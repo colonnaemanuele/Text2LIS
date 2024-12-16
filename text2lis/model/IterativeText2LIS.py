@@ -213,7 +213,6 @@ class IterativeTextGuidedPoseGenerationModel(pl.LightningModule):
                 step_num += 1
 
     def refinement_step(self, step_num, pose_sequence, text_encoding):
-        # Assicurati che la device del modello sia assegnata correttamente
         device = self.device
 
         batch_size = pose_sequence["data"].shape[0]

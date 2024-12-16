@@ -1,25 +1,21 @@
 import os
 
-import args as args
+from text2lis.model.args import args
 import torch
 import yaml
 import numpy as np
-from torch.utils.data import DataLoader, Dataset
+from torch.utils.data import DataLoader
 from torch.optim import Adam, SGD
 import pytorch_lightning as pl
 from pytorch_lightning.callbacks import ModelCheckpoint
-
-import sys
-
 from process_data import get_synthetic_dataset
-from Iterative_Text_to_LIS_Model import IterativeTextGuidedPoseGenerationModel
+from text2lis.model.IterativeText2LIS import IterativeTextGuidedPoseGenerationModel
 from inference import pred
 
-from tokenizer_ita import EnglishTokenizer
-from colator import zero_pad_collator
+from text2lis.model.tokenizer_ita import EnglishTokenizer
+from text2lis.model.colator import zero_pad_collator
 
-from args import args
-from argparse import ArgumentParser
+from text2lis.model.args import args
 
 
 MIN_CONFIDENCE = 0.2
@@ -65,9 +61,7 @@ class CustomErrorCallback(pl.Callback):
         pass
 
     def on_exception(self, trainer, pl_module, exception):
-        if isinstance(
-            exception, RuntimeError
-        ) and "CUDA error: device-side assert triggered" in str(exception):
+        if isinstance(exception, RuntimeError) and "CUDA error: device-side assert triggered" in str(exception):
             print("Caught CUDA device-side assert error during training.")
             # Debug: Stampa lo stato del modello e dei dati
             print(f"Exception details: {exception}")
@@ -86,13 +80,9 @@ if __name__ == "__main__":
     args["batch_size"] = 1
 
     # Create synthetic datasets
-    train_dataset, test_dataset = get_synthetic_dataset(
-        num_samples=10000, max_seq_size=200, split_ratio=0.9
-    )
+    train_dataset, test_dataset = get_synthetic_dataset(num_samples=10000, max_seq_size=200, split_ratio=0.9)
 
-    train_loader = DataLoader(
-        train_dataset, batch_size=32, shuffle=False, collate_fn=zero_pad_collator
-    )
+    train_loader = DataLoader(train_dataset, batch_size=32, shuffle=False, collate_fn=zero_pad_collator)
     # print(train_dataset[0]["pose"]["data"].shape)
 
     _, _, _, num_pose_joints, num_pose_dims = train_dataset[0]["pose"]["data"].shape
@@ -130,7 +120,7 @@ if __name__ == "__main__":
 
     # evaluate
     model = IterativeTextGuidedPoseGenerationModel.load_from_checkpoint(
-        r"D:\Lis\progetto\TextToLis\models\ham2pose\model.ckpt", **model_args
+        r"pretrained_models/checkpoints", **model_args
     )
     device = "cuda:0" if torch.cuda.is_available() else "cpu"
     model.to(device)

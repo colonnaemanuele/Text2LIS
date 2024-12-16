@@ -267,18 +267,12 @@ if __name__ == "__main__":
     model = TextGuidedPoseGenerationModel(**model_args)
 
     # Load the saved model weights
-    model.load_state_dict(torch.load("pretrained_models/ckpt_Text2LIS_2024-07-16_1258/model_1step.ckpt", map_location=torch.device("cpu")))
+    model.load_state_dict(torch.load("pretrained_models/ckpt_Text2LIS_2024-07-16_1258/model_10step.ckpt", map_location=torch.device("cpu")), strict=False)
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model.to(device)
     model.eval()
 
-    train_dataset, test_dataset = get_dataset(
-        num_samples=10000, max_seq_size=200, split_ratio=0.9
-    )
+    train_dataset, test_dataset = get_dataset(num_samples=10000, max_seq_size=200, split_ratio=0.9)
 
-    pred(
-        model,
-        test_dataset,
-        os.path.join(f"./models/{args['model_name']}", args["output_dir"], "train"),
-    )
+    pred(model, test_dataset, os.path.join(f"./models/{args['model_name']}", args["output_dir"], "train"))

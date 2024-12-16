@@ -63,10 +63,10 @@ class Text2MotionDataset(Dataset):
         text = self.tokenizer(
             data["text"], return_tensors="pt", padding=True, truncation=True
         )
-        text = text["input_ids"].squeeze(0)
-        # text_attention_mask = text["attention_mask"].squeeze(0)
+        text_ids = text["input_ids"].squeeze(0)
+        text_attention_mask = text["attention_mask"].squeeze(0)
 
-        return text, gesture_list, #text_attention_mask
+        return text_ids, gesture_list, text_attention_mask
 
 
 if __name__ == "__main__":
