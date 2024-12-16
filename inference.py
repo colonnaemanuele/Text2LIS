@@ -1,4 +1,3 @@
-import json
 import os
 import cv2
 import numpy as np
@@ -273,6 +272,5 @@ if __name__ == "__main__":
     model.to(device)
     model.eval()
 
-    train_dataset, test_dataset = get_dataset(num_samples=10000, max_seq_size=200, split_ratio=0.9)
-
+    train_dataset, test_dataset = get_dataset(num_samples=1, max_seq_size=200, split_ratio=0.9)
     pred(model, test_dataset, os.path.join(f"./models/{args['model_name']}", args["output_dir"], "train"))

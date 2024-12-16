@@ -1,5 +1,7 @@
 import sys
 import subprocess
+import lovely_tensors as lt
+lt.monkey_patch()
 sys.path.append('text2lis/model')
 sys.path.append('text2lis/data')
 
@@ -12,9 +14,9 @@ def main():
     mode = sys.argv[1]
 
     if mode == "inference":
-        subprocess.run(["python", "inference.py"])
+        subprocess.run(["/home/emanuele/miniconda3/envs/text2lis/bin/python", "inference.py"])
     elif mode == "train":
-        subprocess.run(["python", "train.py"])
+        subprocess.run(["/home/emanuele/miniconda3/envs/text2lis/bin/python", "train.py"])
     else:
         print("Invalid mode. Please choose 'inference' or 'train'.")
         sys.exit(1)
