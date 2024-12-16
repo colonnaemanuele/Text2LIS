@@ -4,3 +4,30 @@ If you need to create a new sign langugage dataset from webscraping check this [
 This repository contains the official code for the paper Text-to-LIS: Towards Italian Sign Language generation for digital humans
 
 ![Text2LISModel](assets/Text2LISModel.svg)
+
+### Virtual Environment Creation (Conda)
+```bash
+conda create -n text2lis python=3.10
+conda activate text2lis
+```
+### Virtual Environment Creation (pip)
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Su sistemi Unix o MacOS
+.venv\Scripts\activate   # Su sistemi Windows
+```
+
+### Installazione delle Dipendenze
+```bash
+pip install -r requirements.txt
+```
+
+### Esecuzione del Codice per Demo inferenza
+```bash
+python __main__.py inference 
+```
+
+### Training 
+```bash
+python __main__.py train
+```
