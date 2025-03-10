@@ -1,7 +1,7 @@
 # Text2LIS: Towards Italian Sign Language generation for digital humans
 If you need to create a new sign langugage dataset from webscraping check this [link](https://github.com/CarpiDiem98/downloader).
 
-This repository contains the official code for the paper [Text-to-LIS]([url](https://www.researchgate.net/publication/387398556_Towards_Italian_Sign_Language_Generation_for_digital_humans)): Towards Italian Sign Language generation for digital humans
+This repository contains the official code for the paper [Text-to-LIS](https://www.researchgate.net/publication/387398556_Towards_Italian_Sign_Language_Generation_for_digital_humans): Towards Italian Sign Language generation for digital humans
 
 ![Text2LISModel](assets/Text2LISModel.svg)
 
